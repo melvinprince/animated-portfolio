@@ -11,8 +11,12 @@ import * as THREE from "three";
 
 const scaleValue = 1.15;
 
-export function Avatar({ cursorPos, ...props }) {
-  const [currentAnimation, setCurrentAnimation] = useState("GettingUp");
+export function Avatar({
+  cursorPos,
+  currentAnimation,
+  setCurrentAnimation,
+  ...props
+}) {
   const group = useRef();
   const { scene } = useGLTF("model/model.glb");
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene]);
@@ -24,22 +28,18 @@ export function Avatar({ cursorPos, ...props }) {
   const { animations: gettingUpAnimation } = useFBX(
     "animations/Getting Up.fbx"
   );
-  //   const { animations: lyingDownAnimation } = useFBX(
-  //     "animations/Lying Down.fbx"
-  //   );
+  const { animations: lyingDownAnimation } = useFBX(
+    "animations/Lying Down.fbx"
+  );
 
   //   console.log(standingIdleAnimation);
 
   standingIdleAnimation[0].name = "Standing";
   gettingUpAnimation[0].name = "GettingUp";
-  //   lyingDownAnimation[0].name = "LyingDown";
+  lyingDownAnimation[0].name = "LyingDown";
 
   const { actions } = useAnimations(
-    [
-      standingIdleAnimation[0],
-      gettingUpAnimation[0],
-      //  lyingDownAnimation[0]],
-    ],
+    [standingIdleAnimation[0], gettingUpAnimation[0], lyingDownAnimation[0]],
     group
   );
 
@@ -49,23 +49,50 @@ export function Avatar({ cursorPos, ...props }) {
       const target = new THREE.Vector3(cursorPos.x * 1, cursorPos.y * 1, 1);
       group.current.getObjectByName("Spine2").lookAt(target);
     }
-
-    // if (currentAnimation === "LyingDown") {
-    //   const target = new THREE.Vector3(cursorPos.x * 1, cursorPos.y * 1, 1);
-    //   group.current.getObjectByName("Neck").lookAt(target);
-    // }
   });
 
   useEffect(() => {
     actions[currentAnimation].reset().fadeIn(0.5).play();
 
-    setTimeout(() => {
-      setCurrentAnimation("Standing");
-    }, 7600);
+    if (currentAnimation === "GettingUp") {
+      setTimeout(() => {
+        setCurrentAnimation("Standing");
+      }, 7600);
+    }
     return () => {
       actions[currentAnimation].reset().fadeOut(0.5);
     };
   }, [currentAnimation]);
+
+  //   useEffect(() => {
+  //     const action = actions[currentAnimation];
+  //     console.log(action);
+  //
+  //     action.reset().fadeIn(0.5).play();
+  //
+  //     if (currentAnimation === "GettingUp") {
+  //       action.clampWhenFinished = true; // Key line: Clamp to the last frame
+  //       action.loop = THREE.LoopOnce; // Key line: Only play once
+  //
+  //       action.onLoop = () => {
+  //         // Callback function for when the animation finishes
+  //         setCurrentAnimation("Standing");
+  //       };
+  //     } else if (currentAnimation === "LyingDown") {
+  //       action.clampWhenFinished = true; // Key line: Clamp to the last frame
+  //       action.loop = THREE.LoopOnce; // Key line: Only play once
+  //
+  //       action.onLoop = () => {
+  //         // Callback function for when the animation finishes
+  //         setCurrentAnimation("Standing");
+  //       };
+  //     }
+  //
+  //     return () => {
+  //       action.fadeOut(0.5);
+  //       action.onLoop = null; // Important: Remove the callback to prevent it from firing after unmount
+  //     };
+  //   }, [currentAnimation]);
 
   return (
     <group

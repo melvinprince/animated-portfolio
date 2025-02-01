@@ -35,6 +35,12 @@ const sliderVariantTop = {
 export default function Hero() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
 
+  const [currentAnimation, setCurrentAnimation] = useState("GettingUp");
+
+  function handleAnimationChange(animationName) {
+    setCurrentAnimation(animationName);
+  }
+
   useEffect(() => {
     const handleMouseMove = (e) => {
       setCursorPos({
@@ -43,11 +49,12 @@ export default function Hero() {
       });
     };
 
-    setTimeout(() => {
+    if (currentAnimation === "Standing") {
       window.addEventListener("mousemove", handleMouseMove);
-    }, 7800);
+    }
+
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  }, [currentAnimation]);
 
   return (
     <div className="hero">
@@ -57,7 +64,9 @@ export default function Hero() {
           <h1>Full Stack Web and Blockchain Developer</h1>
           <div className="buttons">
             <button>Latest works</button>
-            <button>Contact me</button>
+            <a href="#contact">
+              <button>Contact me</button>
+            </a>
           </div>
         </div>
       </div>
@@ -79,8 +88,33 @@ export default function Hero() {
       </motion.div>
       <div className="avatar-container">
         <Canvas shadows camera={{ position: [0, 2, 5], fov: 30 }}>
-          <Experience cursorPos={cursorPos} />
+          <Experience
+            cursorPos={cursorPos}
+            currentAnimation={currentAnimation}
+            setCurrentAnimation={setCurrentAnimation}
+          />
         </Canvas>
+        <div className="animate-btn">
+          <button
+            // onClick={() => setCurrentAnimation("Dance")}
+            className="button-animate"
+          >
+            Dance ?
+          </button>
+          <button
+            onClick={() => setCurrentAnimation("LyingDown")}
+            className="button-animate"
+          >
+            Sleep
+          </button>
+          <button className="button-animate">Fly</button>
+          <button
+            onClick={() => setCurrentAnimation("Standing")}
+            className="button-animate"
+          >
+            Stand Still
+          </button>
+        </div>
       </div>
     </div>
   );
