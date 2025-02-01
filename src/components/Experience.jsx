@@ -1,9 +1,10 @@
-import { ContactShadows } from "@react-three/drei";
+import { ContactShadows, OrbitControls } from "@react-three/drei";
 import { Avatar } from "./Avatar";
 
 export const Experience = () => {
   return (
     <>
+      <OrbitControls />
       <group position-y={-1}>
         <ContactShadows
           opacity={0.42}
@@ -13,11 +14,8 @@ export const Experience = () => {
           resolution={256}
           color="#000000"
         />
+
         <Avatar />
-        <mesh scale={1} rotation-x={-Math.PI * 0.5} position-y={-0.001}>
-          <planeGeometry />
-          <meshStandardMaterial color="white" />
-        </mesh>
       </group>
       <ambientLight intensity={3} />
     </>
