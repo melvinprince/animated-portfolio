@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import "./styles/hero.scss";
 import { motion } from "framer-motion";
-// import { Experience } from "./Experience";
+import { Experience } from "./Experience";
 
 const textVariants = {
   initial: {
@@ -77,10 +77,10 @@ export default function Hero() {
         Software Engineer
       </motion.div>
       <div className="avatar-container">
-        {/* <Canvas shadows camera={{ position: [0, 2, 5], fov: 30 }}>
+        <Canvas shadows camera={{ position: [0, 2, 5], fov: 30 }}>
           <color attach="background" args={["#ececec"]} />
           <Experience />
-        </Canvas> */}
+        </Canvas>
       </div>
     </div>
   );
