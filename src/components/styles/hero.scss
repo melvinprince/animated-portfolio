@@ -1,2 +1,71 @@
+@import "../../variables.scss";
+
 .hero {
+  height: calc(100vh - 10rem);
+  overflow: hidden;
+  background: linear-gradient(180deg, $color-primary, $color-primary-light);
+  position: relative;
+
+  .wrapper {
+    max-width: 136.6rem;
+    height: 100%;
+    margin: 0 auto;
+
+    .text-container {
+      height: 100%;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    h2 {
+      font-size: 3rem;
+      color: $main-heading-color;
+      letter-spacing: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 7rem;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      button {
+        padding: 2rem;
+        border: 1px solid white;
+        border-radius: 10px;
+        background-color: transparent;
+        color: white;
+        cursor: pointer;
+        font-weight: 300;
+      }
+    }
+
+    img {
+      width: 5rem;
+    }
+  }
+
+  .img-container {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .sliding-text {
+    position: absolute;
+    font-size: 50vh;
+    bottom: -12rem;
+    white-space: nowrap;
+    opacity: 0.1;
+    width: 50%;
+    font-weight: bold;
+  }
 }
