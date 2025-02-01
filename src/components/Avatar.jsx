@@ -9,6 +9,8 @@ import { useAnimations, useFBX, useGLTF } from "@react-three/drei";
 import { SkeletonUtils } from "three-stdlib";
 import * as THREE from "three";
 
+const scaleValue = 1.25;
+
 export function Avatar({ cursorPos, ...props }) {
   const group = useRef();
 
@@ -35,7 +37,12 @@ export function Avatar({ cursorPos, ...props }) {
   }, []);
 
   return (
-    <group {...props} ref={group} dispose={null} scale={[1.1, 1.1, 1.1]}>
+    <group
+      {...props}
+      ref={group}
+      dispose={null}
+      scale={[scaleValue, scaleValue, scaleValue]}
+    >
       <primitive object={nodes.Hips} />
       <skinnedMesh
         geometry={nodes.Wolf3D_Hair.geometry}
