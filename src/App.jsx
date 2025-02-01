@@ -10,11 +10,11 @@ const App = () => {
   return (
     <div>
       <Home />
-      <Parallax type="services" />
+      {/* <Parallax type="services" />
       <Service />
       <Parallax type="about" />
       <ProjectOne />
-      <About />
+      <About /> */}
       <Contact />
     </div>
   );

@@ -10,7 +10,7 @@
   .wrapper {
     max-width: 136.6rem;
     height: 100%;
-    margin: 0 auto;
+    margin: auto;
 
     .text-container {
       height: 100%;
@@ -25,12 +25,9 @@
       font-size: 3rem;
       color: $main-heading-color;
       letter-spacing: 1rem;
-      margin: 0;
-      padding: 0;
     }
 
     h1 {
-      margin: 0;
       font-size: 7rem;
     }
 
