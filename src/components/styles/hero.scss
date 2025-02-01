@@ -5,6 +5,7 @@
   overflow: hidden;
   background: linear-gradient(180deg, $color-primary, $color-primary-light);
   position: relative;
+  // z-index: 199;
 
   .wrapper {
     max-width: 136.6rem;
