@@ -35,7 +35,7 @@ export function Avatar({ cursorPos, ...props }) {
   }, []);
 
   return (
-    <group {...props} ref={group} dispose={null}>
+    <group {...props} ref={group} dispose={null} scale={[1.1, 1.1, 1.1]}>
       <primitive object={nodes.Hips} />
       <skinnedMesh
         geometry={nodes.Wolf3D_Hair.geometry}

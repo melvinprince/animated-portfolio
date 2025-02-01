@@ -8,11 +8,11 @@ export const Experience = ({ cursorPos }) => {
       <group position-y={-1}>
         <ContactShadows
           opacity={0.42}
-          scale={10}
-          blur={1}
+          scale={8}
+          blur={0.7}
           far={10}
           resolution={256}
-          color="#000000"
+          color="#ffffff"
         />
 
         <Avatar cursorPos={cursorPos} />
