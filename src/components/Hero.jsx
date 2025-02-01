@@ -56,10 +56,9 @@ export default function Hero() {
           <h2>Melvin Prince</h2>
           <h1>Full Stack Web and Blockchain Developer</h1>
           <div className="buttons">
-            <button>See the latest works</button>
+            <button>Latest works</button>
             <button>Contact me</button>
           </div>
-          <img animate="scrollImgAnimation" src="/scroll.png" alt="" />
         </div>
       </div>
       <motion.div
