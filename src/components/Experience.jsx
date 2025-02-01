@@ -1,7 +1,7 @@
 import { ContactShadows, OrbitControls } from "@react-three/drei";
 import { Avatar } from "./Avatar";
 
-export const Experience = () => {
+export const Experience = ({ cursorPos }) => {
   return (
     <>
       <OrbitControls />
@@ -15,7 +15,7 @@ export const Experience = () => {
           color="#000000"
         />
 
-        <Avatar />
+        <Avatar cursorPos={cursorPos} />
       </group>
       <ambientLight intensity={3} />
     </>
