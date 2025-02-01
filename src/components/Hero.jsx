@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Experience } from "./Experience";
 import { useEffect, useState } from "react";
 
-const sliderVariants = {
+const sliderVariantBottom = {
   initial: {
     x: 0,
   },
@@ -12,6 +12,20 @@ const sliderVariants = {
     x: "-220%",
     transition: {
       duration: 20,
+      repeat: Infinity,
+      repeatType: "mirror",
+    },
+  },
+};
+
+const sliderVariantTop = {
+  initial: {
+    x: "-50%",
+  },
+  animate: {
+    x: "200%",
+    transition: {
+      duration: 15,
       repeat: Infinity,
       repeatType: "mirror",
     },
@@ -29,7 +43,9 @@ export default function Hero() {
       });
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    setTimeout(() => {
+      window.addEventListener("mousemove", handleMouseMove);
+    }, 7800);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
@@ -47,12 +63,20 @@ export default function Hero() {
         </div>
       </div>
       <motion.div
-        className="sliding-text"
-        variants={sliderVariants}
+        className="sliding-text-bottom"
+        variants={sliderVariantBottom}
         initial="initial"
         animate="animate"
       >
         Software Engineer
+      </motion.div>
+      <motion.div
+        className="sliding-text-top"
+        variants={sliderVariantTop}
+        initial="initial"
+        animate="animate"
+      >
+        Creative Designer
       </motion.div>
       <div className="avatar-container">
         <Canvas shadows camera={{ position: [0, 2, 5], fov: 30 }}>

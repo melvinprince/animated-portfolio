@@ -57,10 +57,20 @@
     right: 0;
   }
 
-  .sliding-text {
+  .sliding-text-bottom {
     position: absolute;
     font-size: 50vh;
-    bottom: -12rem;
+    bottom: -20rem;
+    white-space: nowrap;
+    opacity: 0.1;
+    width: 50%;
+    font-weight: bold;
+  }
+
+  .sliding-text-top {
+    position: absolute;
+    font-size: 30vh;
+    top: -20rem;
     white-space: nowrap;
     opacity: 0.1;
     width: 50%;

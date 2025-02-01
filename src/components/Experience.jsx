@@ -5,7 +5,7 @@ export const Experience = ({ cursorPos }) => {
   return (
     <>
       <OrbitControls />
-      <group position-y={-1.3}>
+      <group position-y={-1.2}>
         <ContactShadows
           opacity={0.42}
           scale={8}
