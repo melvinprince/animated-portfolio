@@ -1,8 +1,62 @@
 import "./styles/techStack.scss";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import TechStackCard from "../components/TechStackCard";
 
 // Using wheel events instead of ScrollTrigger to control the scrub
+
+const cardData = [
+  {
+    heading: "Frontend Development",
+    description:
+      "Expert in building responsive and dynamic user interfaces with modern web technologies.",
+    stacks: [
+      "HTML",
+      "JavaScript",
+      "TypeScript",
+      "CSS / Sass / Tailwind / Styled Components",
+      "React.js",
+      "Next.js",
+      "EJS",
+      "jQuery",
+    ],
+  },
+  {
+    heading: "Backend & Database",
+    description:
+      "Skilled in developing robust server-side applications and managing databases.",
+    stacks: [
+      "Node.js",
+      "Express.js",
+      "GraphQL",
+      "WebSocket",
+      "PostgreSQL",
+      "MongoDB",
+      "Supabase",
+      "Firebase",
+    ],
+  },
+  {
+    heading: "Blockchain & Smart Contracts",
+    description:
+      "Experienced in building decentralized applications and smart contracts.",
+    stacks: ["Motoko", "Solidity", "Ethereum (Smart Contracts)"],
+  },
+  {
+    heading: "Animation, Motion, 3D & Design",
+    description:
+      "Proficient in creating engaging animations, interactive motion designs, and modern design prototypes.",
+    stacks: [
+      "GSAP",
+      "Framer Motion",
+      "React Three Fiber",
+      "React Drei",
+      "Figma",
+      "Adobe Illustrator",
+    ],
+  },
+];
+
 const TechStack = () => {
   const techStackBGRef = useRef(null);
   const cardsRef = useRef([]);
@@ -136,11 +190,18 @@ const TechStack = () => {
     <section id="techStack">
       <div className="techStackBG" ref={techStackBGRef}>
         <ul className="cards">
-          {[1, "Hi", 3, 4].map((item, index) => (
+          {cardData.map((item, index) => (
             <li key={index} ref={(el) => (cardsRef.current[index] = el)}>
-              {item}
+              <TechStackCard data={item} />
             </li>
           ))}
+          {/* {cardData.map((item, index) => (
+            <TechStackCard
+              key={index}
+              ref={(el) => (cardsRef.current[index] = el)}
+              data={item}
+            />
+          ))} */}
         </ul>
       </div>
     </section>

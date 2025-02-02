@@ -1,0 +1,46 @@
+/* SVG Styling */
+.react-logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+  animation: rotateLogo 6s linear infinite;
+}
+
+@keyframes rotateLogo {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animate the ellipses */
+.react-ellipse {
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: drawStroke 2s ease-in-out infinite alternate;
+}
+
+@keyframes drawStroke {
+  0% {
+    stroke-dashoffset: 50;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Pulsating effect on the center circle */
+.react-circle {
+  animation: pulseCircle 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulseCircle {
+  0% {
+    r: 2.05;
+  }
+  100% {
+    r: 4;
+  }
+}
