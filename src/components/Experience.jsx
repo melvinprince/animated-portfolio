@@ -13,7 +13,7 @@ export const Experience = ({
         <ContactShadows
           opacity={0.42}
           scale={8}
-          blur={0.7}
+          blur={0.9}
           far={10}
           resolution={256}
           color="#ffffff"

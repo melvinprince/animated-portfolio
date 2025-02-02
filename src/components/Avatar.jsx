@@ -64,6 +64,7 @@ export function Avatar({
     };
   }, [currentAnimation]);
 
+  // this was for pausing animaion ater one play
   //   useEffect(() => {
   //     const action = actions[currentAnimation];
   //     console.log(action);
